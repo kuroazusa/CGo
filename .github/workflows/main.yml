@@ -7,7 +7,7 @@ jobs:
   pyinstaller-build:
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-14, macos-13, ubuntu-20.04, windows-2019]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -20,5 +20,5 @@ jobs:
           python_ver: '3.13.1'
           spec: 'go.py'
           requirements: 'requirements.txt'
-          upload_exe_with_name: 'CGo-${{ runner.os }}'
+          upload_exe_with_name: 'CGo-${{ runner.os }}-${{ runner.arch }}'
           options: '--onefile --name CGo --windowed'
